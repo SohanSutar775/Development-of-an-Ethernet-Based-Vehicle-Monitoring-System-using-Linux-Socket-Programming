@@ -1,0 +1,21 @@
+---
+
+## `src/Makefile`
+
+```makefile
+CC = gcc
+CFLAGS = -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L
+TARGETS = vehicle_ecu dashboard_ecu
+
+all: $(TARGETS)
+
+vehicle_ecu: vehicle_ecu.c
+	$(CC)$(CFLAGS) -o $@ $<
+
+dashboard_ecu: dashboard_ecu.c
+	$(CC)$(CFLAGS) -o $@ $<
+
+clean:
+	rm -f $(TARGETS)
+
+.PHONY: all clean
